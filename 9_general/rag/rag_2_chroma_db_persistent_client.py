@@ -16,13 +16,22 @@ knowledge_base = {
 }
 
 collection.add(
-    documents=list(knowledge_base.values()),
-    ids=list(knowledge_base.keys())
+    documents=list(knowledge_base.keys()),              # Embed the QUESTIONS
+    metadatas=[{"answer": a} for a in knowledge_base.values()],  # Store answers
+    ids=[str(i) for i in range(len(knowledge_base))]
 )
 
-# Query is always on the values (documents), not keys
+# User query
+user_input = "I want to use cash"
+
 results = collection.query(
-    query_texts=["i want to use cash"], # Chroma will embed this for you
-    n_results=1 # how many results to return
+    query_texts=[user_input],      # Chroma embeds this automatically
+    n_results=1
 )
-print(results)
+
+matched_question = results["documents"][0][0]
+answer = results["metadatas"][0][0]["answer"]
+
+print("User Question :", user_input)
+print("Matched FAQ   :", matched_question)
+print("Answer        :", answer)

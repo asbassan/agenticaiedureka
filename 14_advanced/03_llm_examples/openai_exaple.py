@@ -7,7 +7,9 @@ client = OpenAI()
 
 response = client.responses.create(
     model="gpt-4o-mini",
-    input="Explain Artificial Intelligence."
+    instructions="You are a person who understands AI very well.",
+    input="Explain Artificial Intelligence.",
+    temperature=0.9
 )
 
 print(response.output_text)

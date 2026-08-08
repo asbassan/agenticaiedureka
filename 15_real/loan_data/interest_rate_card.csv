@@ -1,0 +1,5 @@
+credit_score_min,credit_score_max,band,annual_interest_rate_percent
+750,900,Prime,8.50
+700,749,Standard,8.90
+650,699,Sub-prime,9.75
+300,649,Below Policy,

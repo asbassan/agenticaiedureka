@@ -1,0 +1,20 @@
+competitor,tier,price_per_user_per_month_usd,original_price,target_segment,ai_features_included
+NimbusCRM,Starter,29,$29 USD,Small Business,Yes (included)
+NimbusCRM,Growth,59,$59 USD,Mid-Market,Yes (included)
+Salesforce,Starter Suite,25,$25 USD (monthly billing),Small Business,No (Einstein is a paid add-on)
+Salesforce,Pro Suite,100,$100 USD (annual billing),Mid-Market,No (Einstein is a paid add-on)
+Salesforce,Enterprise,175,$175 USD (annual billing),Enterprise,No (Einstein is a paid add-on)
+Salesforce,Unlimited,350,$350 USD (annual billing),Enterprise,No (Einstein is a paid add-on)
+Salesforce,Agentforce 1 Sales,550,$550 USD (annual billing),Enterprise,Yes (AI-native tier)
+HubSpot,Free,0,$0 USD,Small Business,No
+HubSpot,Starter,7,$7 USD (annual billing),Small Business,Limited (credit-based agents)
+HubSpot,Professional,90,$90 USD (annual) + $1500 onboarding fee,Mid-Market,Yes (Breeze AI bundled)
+HubSpot,Enterprise,150,$150 USD + $3500 onboarding fee,Enterprise,Yes (Breeze AI bundled)
+Zoho CRM,Standard,9.64,₹800 INR/mo (approx. conversion),Small Business,No
+Zoho CRM,Professional,16.87,₹1400 INR/mo (approx. conversion),Mid-Market,Yes (AI agents)
+Zoho CRM,Enterprise,28.92,₹2400 INR/mo (approx. conversion),Enterprise,Yes (Zia AI)
+Zoho CRM,Ultimate,31.33,₹2600 INR/mo (approx. conversion),Enterprise,Yes (custom AI/ML - QuickML)
+Pipedrive,Lite,14,$14 USD (annual billing),Small Business,No
+Pipedrive,Growth,39,$39 USD (annual billing),Small Business,No
+Pipedrive,Premium,59,$59 USD (annual billing),Mid-Market,No
+Pipedrive,Ultimate,79,$79 USD (annual billing),Mid-Market,No

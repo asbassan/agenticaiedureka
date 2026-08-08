@@ -1,12 +1,16 @@
 # pip install mcp
+import os
 import sqlite3
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("sqlite-database")
 
+# Resolve the DB next to this script, regardless of the caller's working directory
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "simple_db.sqlite")
+
 # Create a simple SQLite database
 def init_database():
-    conn = sqlite3.connect('simple_db.sqlite')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
@@ -27,7 +31,7 @@ def add_user(name: str, email: str) -> str:
         name: User's name
         email: User's email
     """
-    conn = sqlite3.connect('simple_db.sqlite')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute(
         "INSERT INTO users (name, email) VALUES (?, ?)",
@@ -42,7 +46,7 @@ def list_users() -> str:
     """
     List all users in the database
     """
-    conn = sqlite3.connect('simple_db.sqlite')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM users")
     users = cursor.fetchall()

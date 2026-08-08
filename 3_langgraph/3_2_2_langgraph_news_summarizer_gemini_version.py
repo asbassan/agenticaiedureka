@@ -1,3 +1,8 @@
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=PendingDeprecationWarning)
+warnings.filterwarnings("ignore", category=FutureWarning)
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
 from dotenv import load_dotenv
@@ -33,7 +38,11 @@ news_key = os.getenv("NEWS_API_KEY")
 def get_text(resp):
     # Gemini 2.5 usually returns resp.content as a string.
     # Newer Gemini models may expose text through resp.text.
-    return getattr(resp, "text", None) or resp.content
+    # In some langchain-core versions, .text is a method, not a string - skip it then.
+    text = getattr(resp, "text", None)
+    if callable(text):
+        text = None
+    return text or resp.content
 
 # --------------------------
 # Agent Functions

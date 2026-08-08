@@ -15,41 +15,61 @@ collection = client.get_or_create_collection(
     embedding_function=embedding_fn
 )
 
-# Knowledge base with metadata
+# Knowledge base (Question -> Answer + Metadata)
 knowledge_base = {
-    "shipping_time": {
-        "text": "Our standard shipping time is 3-5 business days.",
+    "What is your shipping time?": {
+        "answer": "Our standard shipping time is 3-5 business days.",
         "metadata": {"category": "shipping", "priority": "high"}
     },
-    "return_policy": {
-        "text": "You can return any product within 30 days of delivery.",
+    "What is your return policy?": {
+        "answer": "You can return any product within 30 days of delivery.",
         "metadata": {"category": "returns", "priority": "medium"}
     },
-    "warranty": {
-        "text": "All products come with a one-year warranty covering manufacturing defects.",
+    "What warranty do you provide?": {
+        "answer": "All products come with a one-year warranty covering manufacturing defects.",
         "metadata": {"category": "warranty", "priority": "medium"}
     },
-    "payment_methods": {
-        "text": "We accept credit cards, debit cards, and PayPal.",
+    "What payment methods do you accept?": {
+        "answer": "We accept credit cards, debit cards, and PayPal.",
         "metadata": {"category": "payment", "priority": "low"}
     },
-    "customer_support": {
-        "text": "You can reach our support team 24/7 via email or chat.",
+    "How can I contact customer support?": {
+        "answer": "You can reach our support team 24/7 via email or chat.",
         "metadata": {"category": "support", "priority": "high"}
     }
 }
 
+# Prepare metadata (add answer to the existing metadata)
+metadatas = []
+
+for item in knowledge_base.values():
+    md = item["metadata"].copy()
+    md["answer"] = item["answer"]
+    metadatas.append(md)
+
 # Add data with metadata
 collection.add(
-    documents=[item["text"] for item in knowledge_base.values()],
-    ids=list(knowledge_base.keys()),
-    metadatas=[item["metadata"] for item in knowledge_base.values()]
+    documents=list(knowledge_base.keys()),   # Embed the QUESTIONS
+    ids=[str(i) for i in range(len(knowledge_base))],
+    metadatas=metadatas
 )
 
 # Query ChromaDB using HF embeddings
+user_input = "delivery lag"
+
 results = collection.query(
-    query_texts=["delivery lag"],
+    query_texts=[user_input],
     n_results=2
 )
 
-print(results)
+print("User Question:", user_input)
+print()
+
+for i in range(len(results["ids"][0])):
+    print(f"Match {i+1}")
+    print("Question :", results["documents"][0][i])
+    print("Answer   :", results["metadatas"][0][i]["answer"])
+    print("Category :", results["metadatas"][0][i]["category"])
+    print("Priority :", results["metadatas"][0][i]["priority"])
+    print("Distance :", results["distances"][0][i])
+    print()

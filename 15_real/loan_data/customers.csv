@@ -1,0 +1,13 @@
+customer_id,name,age,employment_type,annual_salary,credit_score,existing_monthly_emis,existing_loans_description,city
+CUST1001,Rohit Kulkarni,34,Salaried,1800000,760,15000,"Car loan (₹15,000/mo, 2 years remaining)",Pune
+CUST1002,Ananya Iyer,29,Salaried,1200000,705,8000,"Personal loan (₹8,000/mo, 1 year remaining)",Bengaluru
+CUST1003,Vikram Singh,41,Self-Employed,2500000,680,42000,"Business loan (₹30,000/mo) + Car loan (₹12,000/mo)",Delhi
+CUST1004,Priya Nair,37,Salaried,1500000,790,0,None,Chennai
+CUST1005,Arjun Mehta,45,Salaried,2200000,620,55000,"Personal loan (₹25,000/mo) + Credit card EMI (₹30,000/mo)",Mumbai
+CUST1006,Sneha Reddy,31,Salaried,950000,735,5000,"Two-wheeler loan (₹5,000/mo, 6 months remaining)",Hyderabad
+CUST1007,Karan Malhotra,52,Self-Employed,3200000,710,60000,"Business loan (₹45,000/mo) + Car loan (₹15,000/mo)",Delhi
+CUST1008,Divya Menon,26,Salaried,700000,690,3000,"Education loan (₹3,000/mo, 3 years remaining)",Kochi
+CUST1009,Rahul Verma,39,Salaried,1650000,755,20000,"Car loan (₹20,000/mo, 3 years remaining)",Gurugram
+CUST1010,Meera Krishnan,48,Salaried,1900000,640,48000,"Personal loan (₹18,000/mo) + Car loan (₹30,000/mo)",Chennai
+CUST1011,Aditya Rao,33,Salaried,1350000,765,0,None,Bengaluru
+CUST1012,Neha Kapoor,44,Self-Employed,2800000,725,35000,"Business loan (₹35,000/mo)",Mumbai

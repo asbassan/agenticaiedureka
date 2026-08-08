@@ -4,6 +4,7 @@ requests==2.34.2
 
 # LLM provider SDKs
 openai==2.44.0
+tiktoken==0.9.0  # OpenAI tokenizer, used by 14_advanced/03_llm_examples/tiktoken_tokenization_example.py
 ollama==0.6.2
 google-generativeai==0.8.6
 cohere==7.0.5
@@ -23,6 +24,9 @@ phidata==2.7.10
 langchain==0.3.30
 langchain-core==0.3.86
 langchain-community==0.3.31
+beautifulsoup4==4.15.0  # required by WebBaseLoader (14_advanced/05_langchain/document_loaders.py)
+langchain-experimental==0.3.4  # for SemanticChunker; 0.4.x+ forces langchain-core>=1.0, breaking the pre-1.0 pin above
+langsmith==0.9.7  # for @traceable/Client (14_advanced/05_langchain/langsmith_tracing.py)
 langchain-openai==0.3.35
 langchain-huggingface==0.3.1
 langchain-text-splitters==0.3.11
@@ -31,7 +35,9 @@ langchain-chroma==0.2.6
 langchain-ollama==0.3.10
 langchain-tavily==0.2.17
 tavily-python==0.7.26
+google-search-results==2.4.2  # SerpApi client, used for real Google Flights data (14_advanced/08_langgraph_cycles_HIL_persistence/parallel_trip_planner_send_api.py)
 langgraph==0.6.11
+langgraph-checkpoint==2.1.2  # langgraph-checkpoint-sqlite 2.0.11 calls JsonPlusSerializer.dumps(), removed in langgraph-checkpoint 3.x - pin below that or SQLite-backed checkpointing breaks
 langgraph-checkpoint-sqlite==2.0.11
 langserve==0.3.3
 langfuse==4.13.0
@@ -40,6 +46,7 @@ langchain-google-genai==2.0.8  # pinned below latest (like langchain-core) since
 # MCP
 mcp==1.28.1
 fastmcp==3.4.4
+mcp-server-sqlite==2025.4.25  # official reference SQLite MCP server, used by 6_mcp/6_13
 
 # Vector stores / retrieval / embeddings
 chromadb==1.1.1  # crewai hard-pins json-repair==0.25.2 which forces chromadb~=1.1.0; don't bump without checking crewai
@@ -49,6 +56,15 @@ pinecone==9.1.0
 sentence-transformers==5.6.0
 llama-index==0.14.23
 llama-index-vector-stores-chroma==0.5.5
+umap-learn==0.5.12
+
+# RAG evaluation
+ragas==0.4.3  # used by 15_real/ragas_evaluation.py
+deepeval==4.1.5  # used by 15_real/deepeval_evaluation.py
+
+# Voice / audio
+sounddevice==0.5.5  # microphone capture, used by 15_real/voice_assistant_whisper_langchain.py ("mic" mode)
+soundfile==0.14.0  # WAV file I/O, used by the same script
 
 # Data / ML / explainability
 scikit-learn==1.9.0

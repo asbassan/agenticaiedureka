@@ -34,6 +34,7 @@ model = SentenceTransformer(
 # -------------------------------------------------------
 print("Generating embeddings...")
 
+# 10 x 384 array for 10 documents
 embeddings = model.encode(
     documents,
     convert_to_numpy=True
@@ -44,7 +45,10 @@ embeddings = model.encode(
 # -------------------------------------------------------
 dimension = embeddings.shape[1]
 
+# Append raw vectors into a flat list for L2 (Euclidean distance) comparison
+# The only identity a vector has is its row position (0, 1, 2, ...) - the order which they were added in
 index = faiss.IndexFlatL2(dimension)
+# Other options: IndexFlatIP, IndexHNSW32, IndexHNSW64
 
 index.add(embeddings)
 
@@ -60,6 +64,7 @@ def semantic_search(query, top_k=3):
         convert_to_numpy=True
     ).astype("float32")
 
+    # L2 (Euclidean distance) between query and documents    
     distances, indices = index.search(
         query_embedding,
         top_k
@@ -73,6 +78,8 @@ def semantic_search(query, top_k=3):
         start=1
     ):
         print(f"{rank}. Distance = {distance:.4f}")
+        
+        # Index into documents to find the original document
         print(documents[idx])
         print()
 

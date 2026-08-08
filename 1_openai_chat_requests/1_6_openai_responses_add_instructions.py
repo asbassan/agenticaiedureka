@@ -7,7 +7,7 @@ client = OpenAI()
 
 response = client.responses.create(
     model="gpt-4o-mini",
-    instructions="Speak like a detective.", # System message
+    instructions="Speak like a drunk person.", # System message
     input="Why is Python such a popular language?", # User message
 )
 
